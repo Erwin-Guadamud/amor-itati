@@ -1,0 +1,713 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rose-pink: #d6ffd6;
+    --soft-pink: #b3f4ba;
+    --dark-pink: #8fe89f;
+    --text-dark: #3e5a3e;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #f5fff7 0%, #e9ffec 100%);
+}
+
+/* Control de música */
+.music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.player-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.album-art {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.album-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: white;
+}
+
+.artist-name {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.time-current,
+.time-total {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    min-width: 35px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--soft-pink);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background: var(--soft-pink);
+    width: 50px;
+    height: 50px;
+}
+
+.play-btn:hover {
+    background: var(--dark-pink);
+    transform: scale(1.15);
+}
+
+/* Portada */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #c8f7dc 0%, #a8e6cf 50%, #b3f4d9 100%);
+    position: relative;
+    padding: 20px;
+    padding-bottom: 100px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 L60 40 L80 45 L65 60 L68 80 L50 70 L32 80 L35 60 L20 45 L40 40 Z" fill="rgba(255,255,255,0.15)"/></svg>');
+    opacity: 0.4;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s ease;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: #4fa86f;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15), 0 0 15px rgba(142, 232, 159, 0.4);
+    animation: fadeInUp 1s ease, pulse 3s ease-in-out infinite;
+    font-weight: 700;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: #2d452d;
+    margin-bottom: 30px;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.heart-separator {
+    font-size: 3rem;
+    color: var(--dark-pink);
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 0 10px rgba(142, 232, 159, 0.5));
+}
+
+/* Contador de días */
+.days-counter {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    animation: fadeInUp 1.5s ease;
+}
+
+.counter-box {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 35px 60px;
+    box-shadow: 0 10px 40px rgba(79, 168, 111, 0.35), 0 0 20px rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(79, 168, 111, 0.45), 0 0 30px rgba(255, 255, 255, 0.7);
+}
+
+.counter-number {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3.5rem, 8vw, 5rem);
+    font-weight: bold;
+    color: #4fa86f;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15), 0 0 20px rgba(142, 232, 159, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15), 0 0 20px rgba(142, 232, 159, 0.5);
+    }
+    to {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15), 0 0 30px rgba(142, 232, 159, 0.7);
+    }
+}
+
+.counter-label {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #2d452d;
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.counter-date {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #2d452d;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-style: italic;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #2d452d;
+    animation: bounce 2s infinite;
+    z-index: 10;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-indicator span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.arrow-down {
+    font-size: 24px;
+}
+
+/* Mensaje de amor */
+.love-message {
+    padding: 80px 20px 100px;
+    background: var(--white);
+    position: relative;
+    z-index: 5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.love-message h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--dark-pink);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.subtitle-love {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--dark-pink);
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.love-message p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--text-dark);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.love-message p:nth-child(2) { animation-delay: 0.2s; }
+.love-message p:nth-child(3) { animation-delay: 0.4s; }
+.love-message p:nth-child(4) { animation-delay: 0.6s; }
+.love-message p:nth-child(5) { animation-delay: 0.8s; }
+.love-message p:nth-child(6) { animation-delay: 1s; }
+.love-message p:nth-child(7) { animation-delay: 1.2s; }
+
+.highlight {
+    font-weight: 600;
+    color: var(--dark-pink);
+    font-size: 1.1em;
+}
+
+/* Galería de momentos */
+.moments-gallery {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #e8f9f0 0%, #d4f5e2 100%);
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--dark-pink);
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.moment-card {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 0.8s ease forwards;
+}
+
+.moment-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.moment-image {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.moment-image:hover {
+    transform: scale(1.05);
+}
+
+.moment-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.moment-image.full-image img {
+    object-fit: contain;
+    background: #f5f5f5;
+}
+
+.moment-text {
+    flex: 1;
+    padding: 20px;
+}
+
+.moment-text h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--dark-pink);
+    margin-bottom: 15px;
+}
+
+.moment-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.date {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--dark-pink);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Sección de descubrir */
+.discover-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #a8e6cf 0%, #c8f7dc 100%);
+    text-align: center;
+}
+
+.discover-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--white);
+    margin-bottom: 30px;
+}
+
+.heart-animation {
+    font-size: 5rem;
+    color: var(--white);
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 30px;
+}
+
+.discover-text {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 40px;
+}
+
+.discover-btn {
+    padding: 20px 60px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: var(--white);
+    color: var(--dark-pink);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.discover-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal del video */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.video-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 95%;
+    max-width: 1400px;
+    max-height: 95vh;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px 20px;
+    animation: zoomIn 0.5s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--dark-pink);
+    color: var(--white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-modal:hover {
+    transform: rotate(90deg);
+}
+
+.modal-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--dark-pink);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.video-container {
+    width: 100%;
+    border-radius: 15px;
+    overflow: visible;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: #000;
+}
+
+.video-container video {
+    width: 100%;
+    max-height: 80vh;
+    display: block;
+    object-fit: contain;
+    background: #000;
+}
+
+/* Ocultar controles de volumen del video */
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button {
+    display: none !important;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 20px 20px 120px;
+    }
+
+    .hero-content {
+        margin-top: 200px;
+    }
+
+    .main-title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+        margin-bottom: 15px;
+        font-weight: 700;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(142, 232, 159, 0.5);
+    }
+
+    .subtitle {
+        font-size: clamp(1.1rem, 5vw, 1.6rem);
+        margin-bottom: 25px;
+        font-weight: 400;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .heart-separator {
+        font-size: 2.5rem;
+        margin: 20px 0;
+    }
+
+    .counter-box {
+        padding: 30px 45px;
+        margin: 25px 15px;
+    }
+
+    .counter-number {
+        font-size: clamp(3.5rem, 12vw, 4.5rem);
+    }
+
+    .counter-label {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+        letter-spacing: 1.5px;
+    }
+
+    .counter-date {
+        font-size: clamp(0.85rem, 3vw, 1.1rem);
+        margin-top: 12px;
+    }
+
+    .scroll-indicator {
+        bottom: 15px;
+    }
+
+    .moment-card,
+    .moment-card.reverse {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .moment-image img {
+        height: 300px;
+    }
+
+    .music-player {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 280px;
+        padding: 12px;
+        left: auto;
+    }
+
+    .album-art {
+        width: 50px;
+        height: 50px;
+    }
+
+    .song-title {
+        font-size: 0.95rem;
+    }
+
+    .artist-name {
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        padding: 15px 10px;
+        max-width: 98%;
+        max-height: 98vh;
+    }
+
+    .video-container video {
+        max-height: 70vh;
+    }
+
+    .discover-btn {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+    }
+}

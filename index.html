@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Momentos ♥</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Control de música -->
+    <div class="music-player" id="musicPlayer">
+        <div class="player-top">
+            <div class="album-art">
+                <img src="fotos/11.jpeg" alt="Melendi" id="albumArt">
+            </div>
+            <div class="song-info">
+                <div class="song-title">La Promesa</div>
+                <div class="artist-name">Melendi</div>
+            </div>
+        </div>
+        <div class="progress-container">
+            <span class="time-current" id="currentTime">0:00</span>
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="time-total" id="totalTime">0:00</span>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn" id="prevBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                </svg>
+            </button>
+            <button class="control-btn play-btn" id="playPauseBtn">
+                <svg id="playIcon" width="28" height="28" viewBox="0 0 24 24" fill="white">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg id="pauseIcon" width="28" height="28" viewBox="0 0 24 24" fill="white" style="display: none;">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+            </button>
+            <button class="control-btn" id="nextBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M16 18h2V6h-2zm-11-1l8.5-6L5 5z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="backgroundMusic" loop>
+    </audio>
+
+    <!-- Portada -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">14/02/2026</h1>
+            <p class="subtitle">Feliz San Valentín, mi amor</p>
+            <div class="heart-separator">♥</div>
+            <div class="days-counter">
+                <div class="counter-box">
+                    <div class="counter-number" id="daysCounter">0</div>
+                    <div class="counter-label">Días Juntos</div>
+                </div>
+                <p class="counter-date">Desde el 27/04/2024</p>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Desliza para descubrir</span>
+            <div class="arrow-down">↓</div>
+        </div>
+    </section>
+
+    <!-- Mensaje de amor -->
+    <section class="love-message">
+        <div class="container">
+            <h2>Erwin & Itati</h2>
+            <h3 class="subtitle-love">Un amor para toda la vida</h3>
+            <p>Esta es una parte de nuestra historia...</p>
+            <p>Lo nuestro no se planeó.</p>
+            <p>Y pienso que ni haciendo el mejor de los planes,</p>
+            <p>hubiésemos podido crear una historia tan bonita</p>
+            <p class="highlight">como la que hoy tengo el placer de vivir contigo.</p>
+            <p>Cada foto, cada momento, cada sonrisa</p>
+            <p class="highlight">Son la prueba de que lo nuestro es para SIEMPRE</p>
+        </div>
+    </section>
+
+    <!-- Galería de momentos -->
+    <section class="moments-gallery">
+        <div class="container">
+            <h2 class="section-title">Nuestros Momentos</h2>
+            
+            <!-- Momento 1 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/1 primer salida con mi amor .jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Nuestra Primera Salida</h3>
+                    <p>El día que todo comenzó oficialmente. Helados en mano y corazones llenos de ilusión, supimos que este era solo el inicio de algo hermoso.</p>
+                    <span class="date">27 de abril, 2024</span>
+                </div>
+            </div>
+
+            <!-- Momento 2 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/2.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>El Primer Ramo de Flores</h3>
+                    <p>Cuando te pedí ser mi novia, quise que ese momento fuera inolvidable. Este ramo lleno de girasoles y rosas fue el primero de muchos detalles para celebrar que dijiste sí.</p>
+                    <span class="date">Cuando comenzamos esto</span>
+                </div>
+            </div>
+
+            <!-- Momento 3 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/3.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Reflejos de Amor</h3>
+                    <p>En el centro comercial, entre luces y espejos, capturamos este momento. Cada salida contigo se convierte en un recuerdo que quiero guardar para siempre.</p>
+                    <span class="date">Un día de compras juntos</span>
+                </div>
+            </div>
+
+            <!-- Momento 4 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/4.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Momentos Robados</h3>
+                    <p>Una salida a comer que terminó en besos y risas. No importa dónde estemos, cada momento a tu lado se siente como el lugar perfecto.</p>
+                    <span class="date">Una tarde perfecta</span>
+                </div>
+            </div>
+
+            <!-- Momento 5 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/5.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Nuestro Rincón de Paz</h3>
+                    <p>Los momentos más simples son los más especiales. Acurrucados, compartiendo sonrisas y silencio. Contigo, hasta quedarnos en casa se siente como una aventura.</p>
+                    <span class="date">Un día tranquilo juntos</span>
+                </div>
+            </div>
+
+            <!-- Momento 6 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/6.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Besos y Sonrisas</h3>
+                    <p>Esos momentos espontáneos donde solo importamos nosotros. Tu sonrisa y mis besos, la combinación perfecta que nunca me cansaré de capturar.</p>
+                    <span class="date">Amor del día a día</span>
+                </div>
+            </div>
+
+            <!-- Momento 7 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/7.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Tu Sonrisa es Mi Felicidad</h3>
+                    <p>Cada vez que te beso y veo esa sonrisa dibujarse en tu rostro, sé que no hay lugar donde prefiera estar. Eres mi hogar, mi paz, mi todo.</p>
+                    <span class="date">Cada día contigo</span>
+                </div>
+            </div>
+
+            <!-- Momento 8 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/8.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Tu Vista Favorita</h3>
+                    <p>Querías capturar ese hermoso paisaje, pero para mí, el paisaje más hermoso siempre serás tú. Con el mar de fondo, abrazándote, supe que cada foto contigo es perfecta.</p>
+                    <span class="date">Vistas inolvidables</span>
+                </div>
+            </div>
+
+            <!-- Momento 9 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/9.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Ni Tristes Nos Separamos</h3>
+                    <p>Incluso cuando hacemos muecas de tristeza, terminamos riendo juntos. Contigo hasta los momentos "tristes" se convierten en recuerdos llenos de amor y diversión.</p>
+                    <span class="date">Siempre juntos</span>
+                </div>
+            </div>
+
+            <!-- Momento 10 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/10.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Descanso en Tus Brazos</h3>
+                    <p>Acurrucados, sin necesidad de palabras. En tu abrazo encuentro mi lugar favorito en el mundo, donde todo tiene sentido y el tiempo se detiene.</p>
+                    <span class="date">Nuestro refugio</span>
+                </div>
+            </div>
+
+            <!-- Momento 11 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/primer navidad juntos.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Nuestra Primera Navidad</h3>
+                    <p>Celebrando juntos la magia de la Navidad. Con luces, sonrisas y gorros navideños, comenzamos una tradición que durará para siempre. La primera de muchas navidades a tu lado.</p>
+                    <span class="date">24 de diciembre, 2024</span>
+                </div>
+            </div>
+
+            <!-- Momento 12 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/11.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Me Haces Tan Feliz</h3>
+                    <p>No necesito más que estar a tu lado para sentir que todo está bien. Tu presencia es mi felicidad, tus abrazos mi refugio. Gracias por llenar mis días de amor.</p>
+                    <span class="date">Cada momento contigo</span>
+                </div>
+            </div>
+
+            <!-- Momento 13 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/12.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Me Acompañas Siempre</h3>
+                    <p>De todos los días que me acompañas a trabajar, este es uno de los que atesoro. Tu compañía hace que hasta el camino más simple se sienta como una aventura juntos.</p>
+                    <span class="date">Nuestro día a día</span>
+                </div>
+            </div>
+
+            <!-- Momento 14 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/salida de primer año juntos.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Celebrando Nuestro Primer Año</h3>
+                    <p>Un año completo a tu lado y cada día sigue siendo mágico. Celebramos con vistas al mar y sonrisas eternas. Aquí está el primero de muchos aniversarios juntos.</p>
+                    <span class="date">27 de abril, 2025</span>
+                </div>
+            </div>
+
+            <!-- Momento 15 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/regalo de primer años juntos.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Sorpresa de Aniversario</h3>
+                    <p>Al día siguiente de nuestro aniversario, quise sorprenderte con este detalle especial. Tu sonrisa al recibirlo valió más que mil regalos. Cada detalle pensado con amor para ti.</p>
+                    <span class="date">28 de abril, 2025</span>
+                </div>
+            </div>
+
+            <!-- Momento 16 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/logros de mi amorcito.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Tu Imposición de Mandil</h3>
+                    <p>Qué orgullo acompañarte en este logro tan importante. Ver tu sueño de ser enfermera hacerse realidad fue un honor. Tus logros son míos también, y siempre estaré ahí para celebrarte.</p>
+                    <span class="date">Tu día de éxito</span>
+                </div>
+            </div>
+
+            <!-- Momento 17 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/18.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Ese Día Brillaste</h3>
+                    <p>Ese mismo día, te veías radiante. La forma en que me mirabas mientras celebrábamos tu logro, me recordó por qué cada día a tu lado es un regalo. Eres mi orgullo y mi amor.</p>
+                    <span class="date">Un momento perfecto</span>
+                </div>
+            </div>
+
+            <!-- Momento 18 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/en el cumpleaños de mi amor .jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Celebrando Tu Vida</h3>
+                    <p>Tu cumpleaños, un día para celebrarte a ti, al amor de mi vida. Cada año a tu lado es un regalo, y ver tu sonrisa mientras te besaba hizo que ese día fuera perfecto.</p>
+                    <span class="date">1 de agosto, 2025</span>
+                </div>
+            </div>
+
+            <!-- Momento 19 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/demostrando nuestro amor .jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Nuestro Amor Eterno</h3>
+                    <p>Un día en el campo creando algo especial juntos. Con nuestras manos plasmamos lo que sentimos: un amor eterno. Estas manualidades quedaron como símbolo de que lo nuestro es para siempre.</p>
+                    <span class="date">Creando recuerdos</span>
+                </div>
+            </div>
+
+            <!-- Momento 20 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/en su graduacion.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Tu Graduación, Nuestro Triunfo</h3>
+                    <p>El día que te vi recibir tu diploma, mi corazón se llenó de orgullo. Acompañarte en este logro tan importante fue un honor. Todo tu esfuerzo valió la pena, mi amor. ¡Lo lograste!</p>
+                    <span class="date">27 de noviembre, 2025</span>
+                </div>
+            </div>
+
+            <!-- Momento 21 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/segunda navidad juntos.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Nuestra Segunda Navidad</h3>
+                    <p>Y llegó nuestra segunda Navidad juntos, combinando perfectamente con rojo vino. Cada tradición que creamos se vuelve más especial. Aquí está a muchas más navidades a tu lado.</p>
+                    <span class="date">24 de diciembre, 2025</span>
+                </div>
+            </div>
+
+            <!-- Momento 22 -->
+            <div class="moment-card reverse">
+                <div class="moment-image full-image">
+                    <img src="fotos/17.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>Consintiéndote Siempre</h3>
+                    <p>Llevarte a comer y complacer todos tus caprichos es lo que más feliz me hace. Tu sonrisa cuando te sorprendo con tus comidas favoritas no tiene precio. Haría cualquier cosa por verte feliz.</p>
+                    <span class="date">Siempre para ti</span>
+                </div>
+            </div>
+
+            <!-- Momento 23 -->
+            <div class="moment-card">
+                <div class="moment-image">
+                    <img src="fotos/sufriendo.jpeg" alt="Momento especial">
+                </div>
+                <div class="moment-text">
+                    <h3>¡Sufriendo! 😂</h3>
+                    <p>Cuando comes tanto que ya no puedes más. Tu cara de felicidad y sufrimiento al mismo tiempo es lo mejor. Te amo mi amor glotona. 💚</p>
+                    <span class="date">Dolor de panza incluido</span>
+                </div>
+            </div>
+
+            <!-- Momento 24 -->
+            <div class="moment-card reverse">
+                <div class="moment-image">
+                    <img src="fotos/bebe.jpeg" alt="Nuestros bebés">
+                </div>
+                <div class="moment-text">
+                    <h3>Nuestros Bebés 🧸💙</h3>
+                    <p>Los peluches que te regalé y tú dices que son nuestros bebés. Me encanta cómo los abrazas y los cuidas. Ver tu felicidad con ellos me llena el corazón. 💚</p>
+                    <span class="date">Tus bebés de peluche</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón para descubrir el video -->
+    <section class="discover-section">
+        <div class="container">
+            <h2>TE AMA MUCHO TU AMORCITO</h2>
+            <div class="heart-animation">♥</div>
+            <p class="discover-text">Descubre todos nuestros momentos juntos</p>
+            <button class="discover-btn" id="discoverBtn">
+                DESCÚBRELO ♥
+            </button>
+        </div>
+    </section>
+
+    <!-- Modal del video -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h2>Feliz Día de San Valentín ❤️</h2>
+            <div class="video-container">
+                <video id="momentsVideo" controls muted>
+                    <source src="VIDEO.mp4" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
